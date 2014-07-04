@@ -167,13 +167,13 @@ class ConcreteJob(base.JobBase):
                         self.logger.info(
                             '"buffer_queue_limit" doesn\'t exist in "config" section.'
                         )
-                        buffer_queue_limit = 0
+                        buffer_queue_limit = -1
 
                 else:
                     self.logger.warn(
                         '"config" section doesn\'t exist.'
                     )
-                    buffer_queue_limit = 0
+                    buffer_queue_limit = -1
 
                 item = TdAgentItem(
                     key=(
