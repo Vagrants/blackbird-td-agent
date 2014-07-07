@@ -3,7 +3,7 @@
 %define name blackbird-td-agent
 %define version 0.1.0
 %define unmangled_version %{version}
-%define release 1%{dist}
+%define release 2%{dist}
 %define include_dir /etc/blackbird/conf.d
 %define plugins_dir /opt/blackbird/plugins
 
@@ -45,11 +45,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
-%dir %{include_dir}
-%config(noreplace) %{include_dir}/td_agent.cfg
-%dir %{plugins_dir}
+%config(noreplace) %{include_dir}/td-agent.cfg
 %{plugins_dir}/td_agent.*
 
 %changelog
+* Fri Jul 4 2014 ARASHI, Jumpei <jumpei.arashi@arashike.com> - 0.1.0-2
+- Remove include_dir and plugins_dir from %dir
+
 * Fri Jul 4 2014 ARASHI, Jumpei <jumpei.arashi@arashike.com> - 0.1.0-1
 - Initial package
