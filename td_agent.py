@@ -100,7 +100,11 @@ class ConcreteJob(base.JobBase):
         response = self._get_monitor_agent_plugin(self.url)
 
         for entry in response['plugins']:
-            if entry['output_plugin'] is True:
+            if (
+                (entry['output_plugin'] is True)
+                and
+                ('buffer_queue_length' in entry.keys())
+            ):
                 plugin_name = self._generate_plugin_name(
                     plugin_id=entry['plugin_id'],
                     type=entry['type']
@@ -161,11 +165,16 @@ class ConcreteJob(base.JobBase):
                 # generate plugin config items
                 if 'config' in entry:
                     if 'buffer_queue_limit' in entry['config']:
-                        buffer_queue_limit = entry['config']['buffer_queue_limit']
+                        buffer_queue_limit = (
+                            entry['config']['buffer_queue_limit']
+                        )
 
                     else:
                         self.logger.info(
-                            '"buffer_queue_limit" doesn\'t exist in "config" section.'
+                            (
+                                '"buffer_queue_limit" doesn\'t exist '
+                                'in "config" section.'
+                            )
                         )
                         buffer_queue_limit = -1
 
