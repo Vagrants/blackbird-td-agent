@@ -83,15 +83,15 @@ class ConcreteJob(base.JobBase):
                     plugin_name
                 )
 
-            if len(output_plugins) > 0:
-                lld_item = base.DiscoveryItem(
-                    key='td-agent.plugins.LLD',
-                    value=[
-                        {'{#PLUGIN}': entry} for entry in output_plugins
-                    ],
-                    host=self.options['hostname']
-                )
-                self._enqueue(lld_item)
+        if len(output_plugins) > 0:
+            lld_item = base.DiscoveryItem(
+                key='td-agent.plugins.LLD',
+                value=[
+                    {'{#PLUGIN}': entry} for entry in output_plugins
+                ],
+                host=self.options['hostname']
+            )
+            self._enqueue(lld_item)
 
     def build_items(self):
         """
