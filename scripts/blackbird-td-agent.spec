@@ -1,9 +1,9 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 %define name blackbird-td-agent
-%define version 0.1.0
+%define version 0.2.0
 %define unmangled_version %{version}
-%define release 2%{dist}
+%define release 1%{dist}
 %define include_dir /etc/blackbird/conf.d
 %define plugins_dir /opt/blackbird/plugins
 
@@ -49,6 +49,10 @@ rm -rf $RPM_BUILD_ROOT
 %{plugins_dir}/td_agent.*
 
 %changelog
+* Wed Dec 24 2014 ARASHI, Jumpei <jumpei.arashi@arashike.com> - 0.2.0-1
+- Handle no "buffer_queue_length" key error
+- Effiency to sending LLD items
+
 * Fri Jul 4 2014 ARASHI, Jumpei <jumpei.arashi@arashike.com> - 0.1.0-2
 - Remove include_dir and plugins_dir from %dir
 
