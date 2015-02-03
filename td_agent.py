@@ -239,7 +239,7 @@ class Validator(base.ValidatorBase):
     def spec(self):
         self.__spec = (
             "[{0}]".format(__name__),
-            "monitor_plugin_host = ipaddress(default='127.0.0.1')",
+            "monitor_plugin_host = string(default=127.0.0.1)",
             "monitor_plugin_port = integer(0, 65535, default=24220)",
             "monitor_plugin_uri = string(default=api/plugins.json)",
             "timeout = integer(default=10)",
