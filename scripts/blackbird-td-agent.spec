@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 %define name blackbird-td-agent
-%define version 0.2.0
+%define version 0.2.1
 %define unmangled_version %{version}
 %define release 1%{dist}
 %define include_dir /etc/blackbird/conf.d
@@ -49,6 +49,9 @@ rm -rf $RPM_BUILD_ROOT
 %{plugins_dir}/td_agent.*
 
 %changelog
+* Wed Feb 4 2015 ARASHI, Jumpei <jumpei.arashi@arashike.com> - 0.2.1-1
+- Remove deprecated validation `ipaddress`
+
 * Wed Dec 24 2014 ARASHI, Jumpei <jumpei.arashi@arashike.com> - 0.2.0-1
 - Handle no "buffer_queue_length" key error
 - Effiency to sending LLD items
